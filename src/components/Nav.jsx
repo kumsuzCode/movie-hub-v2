@@ -13,8 +13,10 @@ export default function Nav() {
           <Link to="/">
             <li className="nav__link">Home</li>
           </Link>
+          <Link to="/favourites">
+            <li className="nav__link">Favourites</li>
+          </Link>
           <li className="nav__link no-click">About</li>
-          <li className="nav__link nav__link--contact no-click">Contact</li>
         </ul>
       </div>
     </nav>

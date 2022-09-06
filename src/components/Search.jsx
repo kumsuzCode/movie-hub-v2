@@ -1,34 +1,30 @@
 import React, { useEffect, useState } from "react";
 import Movie from "./ui/Movie";
+import emptyFaves from "../assets/void.svg";
 
-export default function Search({ query }) {
+export default function Search({ query, toggleFavourite, favourites }) {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
-    //let processedData = [];
     async function handleApiReq() {
-      //const results = document.querySelector(".results__movies");
-      //esults.classList += " movies__loading";
       const data = await fetch(
         `https://www.omdbapi.com/?apikey=2bb078d&s=${query}`
       );
-      //results.classList.remove("movies__loading");
       const processedData = await data.json();
-      console.log("====0===");
-      console.log(processedData);
-      console.log(processedData.Search);
-      console.log("===1====");
       setMovies(processedData.Search);
     }
     handleApiReq();
   }, [query]);
 
-  const movieResults = movies.map((movie) => (
+  const movieResults = movies?.map((movie) => (
     <Movie
       poster={movie.Poster}
-      title={movie.title}
+      title={movie.Title}
       year={movie.Year}
       key={movie.imdbID}
+      id={movie.imdbID}
+      toggleFavourite={toggleFavourite}
+      favourites={favourites}
     />
   ));
 
@@ -38,13 +34,20 @@ export default function Search({ query }) {
         <h2 className="results__title">
           <span className="blue">Search Results</span>
         </h2>
-
-        <div className="results__movies">
-          <div className="movies__loading--spinner">
-            <i className="fa-solid fa-spinner"></i>
-          </div>
-          {movieResults}
-        </div>
+      </div>
+      <div className="results__movies row-movies">
+        {movieResults === undefined ? (
+          <>
+            <span>
+              <figure className="results__img--wrapper">
+                <img src={emptyFaves} alt="" />
+              </figure>
+              <h2>There are no results which fit your search</h2>
+            </span>
+          </>
+        ) : (
+          movieResults
+        )}
       </div>
     </section>
   );

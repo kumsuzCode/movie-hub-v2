@@ -13,8 +13,8 @@ export default function Main({ query, handleQuery }) {
     <header>
       <div className="header__container">
         <h1>
-          Find your next movie to watch with{" "}
-          <span className="blue">MovieHub</span>
+          Find your next movie to watch with
+          <span className="blue"> MovieHub</span>
         </h1>
         <h2>
           Browse our <span className="blue">Extensive Catalogue...</span>
