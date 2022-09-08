@@ -7,6 +7,8 @@ import FavouritesPage from "./pages/FavouritesPage";
 import { AppContextProvider } from "./contexts/AppContext";
 
 function App() {
+  console.log(process.env);
+
   return (
     <div className="App">
       <AppContextProvider>
