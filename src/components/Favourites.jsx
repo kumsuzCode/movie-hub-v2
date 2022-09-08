@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import Movie from "./ui/Movie";
 import emptyFaves from "../assets/void.svg";
+import { AppContext } from "../contexts/AppContext";
 
-export default function Favourites({ favourites, toggleFavourite }) {
+export default function Favourites() {
+  const { favourites, toggleFavourite } = useContext(AppContext);
+
   const faveBooks = favourites.map((movie, index) => (
     <Movie
       poster={movie.poster}

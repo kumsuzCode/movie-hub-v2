@@ -1,8 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Movie from "./ui/Movie";
 import emptyFaves from "../assets/void.svg";
+import { AppContext } from "../contexts/AppContext";
 
-export default function Search({ query, toggleFavourite, favourites }) {
+export default function Search() {
+  const { query, toggleFavourite, favourites } = useContext(AppContext);
+
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {

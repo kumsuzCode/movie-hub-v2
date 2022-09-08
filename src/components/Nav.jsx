@@ -6,11 +6,11 @@ export default function Nav() {
   return (
     <nav>
       <div className="nav__container">
-        <Link to="/">
+        <Link to="/home">
           <img src={logo} className="logo" alt="" />
         </Link>
         <ul className="nav__links">
-          <Link to="/">
+          <Link to="/home">
             <li className="nav__link">Home</li>
           </Link>
           <Link to="/favourites">

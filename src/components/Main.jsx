@@ -1,13 +1,11 @@
-import React from "react";
-import { Link, Navigate } from "react-router-dom";
+import React, { useContext } from "react";
+import { Link } from "react-router-dom";
 import undraw from "../assets/undraw-movie.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { AppContext } from "../contexts/AppContext";
 
-export default function Main({ query, handleQuery }) {
-  const handleFormSubmit = (event) => {
-    event.preventDefault();
-    Navigate("/search");
-  };
+export default function Main() {
+  const { query, handleQuery } = useContext(AppContext);
 
   return (
     <header>
@@ -28,7 +26,7 @@ export default function Main({ query, handleQuery }) {
             onChange={handleQuery}
           />
           <Link to="/search">
-            <button className="search-btn" onSubmit={handleFormSubmit}>
+            <button className="search-btn">
               <FontAwesomeIcon
                 className="search-icon"
                 icon="fa-solid fa-magnifying-glass"
